@@ -8,10 +8,7 @@ const maxPhotosToCheck = 50;
 
 // CONFIG: Add special captions for specific photo numbers here
 const captions = {
-    1: "Where it all started",
-    5: "This day was amazing",
-    16: "My favorite 😗",
-    30: "Ready for 2026"
+  
 };
 
 if (galleryContainer) {
