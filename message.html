@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Note For You</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="center-content">
+    <div id="stars"></div>
+    
+    <div class="glass-card fade-in">
+        <div class="new-year-toast" style="font-size: 3rem;">❤️</div>
+        <h2 style="color: var(--gold); margin-top: 10px;">Happy New Year!</h2>
+        
+        <p class="description" style="color: white; font-size: 1.1rem; line-height: 1.6;">
+            2025 was full of beautiful moments.
+        </p>
+
+        <button id="reveal-btn" class="nav-btn" onclick="revealResolution()" style="margin-top: 30px;">
+            See My 2026 Resolution 😏
+        </button>
+
+        <div id="resolution-text" style="display:none; margin-top: 20px;">
+            <p class="resolution-msg">
+                My resolution is to be the person who makes you smile the most in 2026.😏
+            </p>
+            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 20px;">(Screenshot this as a coupon for a coffee date!)</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <div class="music-control glass-card" onclick="toggleAudio()">
+        <span id="music-icon">🎵</span>
+        <span style="font-size: 0.8rem; margin-left: 5px;">Play Music</span>
+    </div>
+
+    <audio id="bg-audio" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>

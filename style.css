@@ -1,0 +1,222 @@
+:root {
+    --bg: #05070a;
+    --gold: #f3cf7a;
+    --pink: #ff3e6d;
+    --glass: rgba(255, 255, 255, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+/* --- THE SCROLL FIX --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* "auto" means grow as big as the content needs */
+    height: auto !important; 
+    min-height: 100vh;
+    
+    background: var(--bg);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    
+    /* FORCE SCROLL BARS */
+    overflow-y: scroll !important; 
+    overflow-x: hidden;
+}
+
+/* Backgrounds */
+#stars, #heart-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; pointer-events: none;
+}
+
+/* Layouts */
+.center-content {
+    /* Changed from height: 100vh to min-height */
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Glass Card */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    margin: 20px 0; /* Add space so it doesn't touch edges */
+}
+
+/* Countdown */
+.countdown-wrapper { display: flex; justify-content: center; margin: 25px 0; }
+#countdown { display: flex; gap: 12px; }
+
+.time-segment {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 12px;
+    border-radius: 15px;
+    min-width: 70px;
+    border: 1px solid rgba(243, 207, 122, 0.2);
+    text-align: center;
+}
+
+.time-segment span { font-size: 1.8rem; font-weight: 800; color: var(--gold); display: block; }
+.time-segment small { font-size: 0.65rem; text-transform: uppercase; opacity: 0.8; }
+
+/* Text & Buttons */
+.glitter-text {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+    background: linear-gradient(45deg, #fff, var(--gold), #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(243, 207, 122, 0.3);
+    margin: 0;
+    font-weight: 800;
+    text-align: center;
+}
+
+.nav-btn {
+    background: var(--pink);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--pink); }
+
+/* --- GALLERY GRID STYLES --- */
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 10px 100px 10px; /* Big padding at bottom to allow scrolling past last photo */
+}
+
+.gallery-item {
+    width: 44%; 
+    max-width: 200px; 
+    opacity: 0; 
+    transform: translateY(30px);
+    transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item.visible { opacity: 1; transform: translateY(0); }
+
+.polaroid-frame {
+    background: white;
+    padding: 6px 6px 30px 6px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.polaroid-frame:hover {
+    transform: scale(1.15) rotate(0deg) !important;
+    z-index: 100;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+}
+
+.polaroid-frame img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.handwriting { 
+    color: #222; 
+    font-family: 'Brush Script MT', cursive; 
+    font-size: 1.2rem; 
+    margin-top: 10px; 
+    line-height: 1;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .gallery-item { width: 22%; max-width: 240px; }
+    .polaroid-frame img { height: 220px; }
+}
+
+/* Animations & Effects */
+.scroll-reveal { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+.scroll-reveal.active { opacity: 1; transform: translateY(0); }
+.fade-in { animation: fadeIn 1.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.new-year-toast { animation: glow-pulse 1.5s infinite; text-shadow: 0 0 25px var(--gold); }
+@keyframes glow-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+.floating-heart { position: absolute; font-size: 24px; animation: floatUp 8s linear infinite; opacity: 0; }
+@keyframes floatUp { 
+    0% { transform: translateY(110vh); opacity: 0; } 
+    10% { opacity: 0.6; } 
+    90% { opacity: 0.6; } 
+    100% { transform: translateY(-10vh); opacity: 0; } 
+}
+
+.resolution-msg { font-size: 1.3rem; color: var(--gold); font-weight: 600; line-height: 1.4; animation: fadeIn 1s; }
+/* --- MUSIC PLAYER STYLES --- */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.15); /* Glass effect */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    width: auto; /* Override glass-card width */
+}
+
+.music-control:hover {
+    background: rgba(255, 56, 92, 0.6); /* Pink tint on hover */
+    transform: scale(1.05);
+}
+
+.music-playing {
+    border-color: var(--gold);
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% { box-shadow: 0 0 0 0 rgba(243, 207, 122, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(243, 207, 122, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(243, 207, 122, 0); }
+}
+
+/* Fix for the glass-card class conflict */
+div.music-control.glass-card {
+    width: auto;
+    max-width: none;
+    margin: 0;
+}

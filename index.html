@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 | For You</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="center-content">
+    <div id="stars"></div>
+    
+    <div class="glass-card fade-in">
+        <h1 class="glitter-text">2026 is coming...</h1>
+        
+        <div class="countdown-wrapper">
+            <div id="countdown">
+                <div class="time-segment"><span id="hours">00</span><small>Hrs</small></div>
+                <div class="time-segment"><span id="mins">00</span><small>Min</small></div>
+                <div class="time-segment"><span id="secs">00</span><small>Sec</small></div>
+            </div>
+        </div>
+
+        <p class="description" style="margin-bottom: 20px;">
+            But first, I want to celebrate the moments that made 2025 special.
+        </p>
+        
+        <a href="memories.html" class="nav-btn">Open Our Year</a>
+    </div>
+
+    <script src="script.js"></script>
+    <div class="music-control glass-card" onclick="toggleAudio()">
+        <span id="music-icon">🎵</span>
+        <span style="font-size: 0.8rem; margin-left: 5px;">Play Music</span>
+    </div>
+
+    <audio id="bg-audio" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>
