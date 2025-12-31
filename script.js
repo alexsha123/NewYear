@@ -10,7 +10,7 @@ const maxPhotosToCheck = 50;
 const captions = {
     1: "Where it all started",
     5: "This day was amazing",
-    10: "My favorite smile",
+    16: "My favorite 😗",
     30: "Ready for 2026"
 };
 
